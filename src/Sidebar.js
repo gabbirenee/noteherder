@@ -6,9 +6,9 @@ import newHover from './new-hover.png'
 
 const Sidebar = () => {
     return (
-        <div className="Sidebar">
-            <div className="Logo">
-                <img src={quill} alt="Noteherder" />
+        <div className="Sidebar" style={styles.sidebar}>
+            <div className="Logo" style={styles.logo}>
+                <img src={quill} alt="Noteherder" style={styles.logoImg}/>
             </div>
             
             <a href="/ntoes">
@@ -23,6 +23,26 @@ const Sidebar = () => {
             </div>
         </div>
     )
+}
+
+const styles = {
+    sidebar: {
+        width:'6rem',
+        backgroundColor: '#f3f3f3',
+        padding: '0.5rem 0',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+    },
+    logo: {
+        fontFamily: '"Fauna One"',
+        color: '#666',
+        fontSize: '3rem'
+    },
+    logoImg: {
+        width: '3rem',
+        paddingLeft: ''
+    },
 }
 
 export default Sidebar
