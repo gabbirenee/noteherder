@@ -11,13 +11,23 @@ const Sidebar = () => {
                 <img src={quill} alt="Noteherder" style={styles.logoImg}/>
             </div>
             
-            <a href="/ntoes">
-                <img src={newHover} alt="New note" />
-                <img src={newIcon} alt="New note" />
+            <a 
+                className="newNote" 
+                href="/ntoes" 
+                style={[styles.newNote, styles.button]}>
+                    <img 
+                        src={newHover} 
+                        alt="New note" 
+                        style={[styles.img, styles.newNoteImgHover]}  />
+                    <img 
+                        className="outline" 
+                        src={newIcon} 
+                        alt="New note" 
+                        style={[styles.img, styles.newNoteImg]}/>
             </a>
 
             <div class="SignOut">
-                <button>
+                <button style={[styles.button, styles.signOut]}>
                     <i className="fa fa-sign-out"></i>
                 </button>
             </div>
@@ -41,8 +51,39 @@ const styles = {
     },
     logoImg: {
         width: '3rem',
-        paddingLeft: ''
+        paddingLeft: '0.4rem',
     },
+    newNote: {
+        marginTop: '2rem',
+        position: 'relative',
+        width: '40px',
+    },
+    button: {
+        backgroundColor: 'transparent',
+        border: '0',
+        color: '#008BF8',
+        cursor: 'pointer',
+    },
+    newNoteImgHover: {
+        position: 'absolute',
+        left: '0',
+        width: '100%',
+        transition: 'opacity 0.25s ease-in-out',
+        opacity: '0',
+    },
+    newNoteImg: {
+        position: 'absolute',
+        left: '0',
+        width: '100%',
+        transition: 'opacity 0.25s ease-in-out',
+    },
+    signOut: {
+        position: 'absolute',
+        bottom: '1rem',
+        outline: 'none',
+        fontSize: '2rem',
+    },
+
 }
 
 export default Sidebar
