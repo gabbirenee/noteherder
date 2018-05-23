@@ -3,6 +3,20 @@ import React from 'react'
 import Sidebar from './Sidebar'
 import NoteList from './NoteList'
 import NoteForm from './NoteForm'
+import firebase from './.firebaserc'
+
+  // Set the configuration for your app
+  // TODO: Replace with your project's config object
+  var config = {
+    apiKey: "apiKey",
+    authDomain: "projectId.firebaseapp.com",
+    databaseURL: "https://databaseName.firebaseio.com",
+    storageBucket: "bucket.appspot.com"
+  };
+  firebase.initializeApp(config);
+
+  // Get a reference to the database service
+  var database = firebase.database();
 
 class Main extends React.Component {
   constructor() {
@@ -41,7 +55,7 @@ class Main extends React.Component {
       const i = notes.findIndex(currentNote => currentNote.id === note.id)
       notes[i] = note
     }
-
+    localStorage.setItem(notes, note)
     this.setState({ notes })
     this.setCurrentNote(note)
   }
@@ -54,12 +68,6 @@ class Main extends React.Component {
 
     this.setState({ notes })
     this.setCurrentNote(this.blankNote())
-    // if(i===notes.length-1)
-    // {
-    //   this.setCurrentNote(this.blankNote())
-    // } else {
-    //   this.setCurrentNote(notes[i-1])
-    // }
   }
 
   render() {

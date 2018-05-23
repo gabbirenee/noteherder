@@ -13,7 +13,7 @@ const NoteForm = ({ currentNote, saveNote, deleteNote }) => {
 
   const handleDelete = (ev) => {
     const note = {...currentNote}
-    deleteNote(currentNote)
+    deleteNote(note)
   }
 
   return (
