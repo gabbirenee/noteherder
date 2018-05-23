@@ -4,7 +4,19 @@ import quill from './quill.svg'
 import newIcon from './new.png'
 import newHover from './new-hover.png'
 
-class Sidebar {
+class Sidebar extends React.Component {
+    state = {
+        newIconHovered: false,
+    }
+
+    handleMouseEnter () {
+        this.setState({ newIconHovered: true})
+    }
+
+    handleMouseLeave () {
+        this.setState({ newIconHovered: false })
+    }
+
     render () {
         return (
             <nav
@@ -14,23 +26,29 @@ class Sidebar {
                 className="logo"
                 style={styles.logo}>
                 <img
-                src={quill}
-                alt="Noteherder"
-                style={styles.logoImg}/>
+                    src={quill}
+                    alt="Noteherder"
+                    style={styles.logoImg}/>
             </div>
             <a
                 className="new-note"
                 href="/notes"
-                style={styles.newNote}>
+                style={styles.newNote}
+                onMouseEnter={ () => this.handleMouseEnter()}
+                onMouseLeave={ () => this.handleMouseLeave()}
+                >
                 <img
-                src={newHover}
-                alt="New note"
+                    src={newHover}
+                        alt="New note"
                 style={styles.newNoteImg}/>
                 <img
-                className="outline"
-                src={newIcon}
-                alt="New note"
-                style={styles.newNoteImg}/>
+                    className="outline"
+                    src={newIcon}
+                    alt="New note"
+                    style={{
+                        ...styles.newNoteImg,
+                        opacity: this.state.newIconHovered ? 0 : 1
+                    }}/>
             </a>
             <div
                 className="SignOut"
