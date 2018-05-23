@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, css } from 'aphrodite'
+import {StyleSheet, css} from 'aphrodite'
 
 import quill from './quill.svg'
 import newIcon from './new.png'
