@@ -92,11 +92,10 @@ const styles = StyleSheet.create({
     color: '#008bf8',
     cursor: 'pointer',
     outline: 'none',
+    fontSize: '2rem',
   },
   buttonIcon: {
     fontSize: '2rem',
-    height: '12px',
-    width: '12px',
   },
 })
 
