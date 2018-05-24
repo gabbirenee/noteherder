@@ -1,8 +1,6 @@
-@import url(https://fonts.googleapis.com/css?family=Fauna+One%7COxygen:400,300,700);
-
+@import url(https://fonts.googleapis.com/css?family=Fauna+One|Oxygen:400,300,700);
 
 * {
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 html {

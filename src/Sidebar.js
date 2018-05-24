@@ -1,5 +1,5 @@
 import React from 'react'
-import {StyleSheet, css} from 'aphrodite'
+import { StyleSheet, css } from 'aphrodite'
 
 import quill from './quill.svg'
 import newIcon from './new.png'
@@ -21,7 +21,7 @@ const Sidebar = ({ resetCurrentNote, signOut }) => {
         onClick={(ev) => {
           ev.preventDefault()
           resetCurrentNote()
-          }}
+        }}
       >
         <img
           src={newHover}
@@ -35,13 +35,14 @@ const Sidebar = ({ resetCurrentNote, signOut }) => {
         />
       </a>
       <div className={css(styles.signOut)}>
-        <button 
+        <button
           className={css(styles.button)}
-          onClick={signOut}>
-          <i 
-            title="Sign Out" 
-            className={`fas fa-sign-out-alt ${css(styles.buttonIcon)}`}>
-          </i>
+          onClick={signOut}
+        >
+          <i
+            className={`fas fa-sign-out-alt ${css(styles.buttonIcon)}`}
+            title="sign out"
+          ></i>
         </button>
       </div>
     </nav>
@@ -92,7 +93,6 @@ const styles = StyleSheet.create({
     color: '#008bf8',
     cursor: 'pointer',
     outline: 'none',
-    fontSize: '2rem',
   },
   buttonIcon: {
     fontSize: '2rem',
