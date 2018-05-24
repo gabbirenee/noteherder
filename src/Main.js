@@ -3,20 +3,20 @@ import React from 'react'
 import Sidebar from './Sidebar'
 import NoteList from './NoteList'
 import NoteForm from './NoteForm'
-import firebase from './.firebaserc'
+// import firebase from './.firebaserc'
 
-  // Set the configuration for your app
-  // TODO: Replace with your project's config object
-  var config = {
-    apiKey: "apiKey",
-    authDomain: "projectId.firebaseapp.com",
-    databaseURL: "https://databaseName.firebaseio.com",
-    storageBucket: "bucket.appspot.com"
-  };
-  firebase.initializeApp(config);
+//   // Set the configuration for your app
+//   // TODO: Replace with your project's config object
+//   var config = {
+//     apiKey: "apiKey",
+//     authDomain: "projectId.firebaseapp.com",
+//     databaseURL: "https://databaseName.firebaseio.com",
+//     storageBucket: "bucket.appspot.com"
+//   };
+//   firebase.initializeApp(config);
 
-  // Get a reference to the database service
-  var database = firebase.database();
+//   // Get a reference to the database service
+//   var database = firebase.database();
 
 class Main extends React.Component {
   constructor() {
@@ -63,10 +63,10 @@ class Main extends React.Component {
   deleteNote = (note) => {
     const notes = [...this.state.notes]
     const i = notes.findIndex(currentNote => currentNote.id === note.id)
-    console.log(i)
-    notes.splice(i, 1)
-
-    this.setState({ notes })
+    if(i>-1){
+      notes.splice(i, 1)
+      this.setState({ notes })
+    }
     this.setCurrentNote(this.blankNote())
   }
 
