@@ -8,6 +8,7 @@ const SignIn = ({ handleAuth }) => {
     const authenticate = (provider) => {
         auth.signInWithPopup(provider)
     }
+    
   return (
     <div className="SignIn">
       <header className="Header">
