@@ -10,6 +10,9 @@ class App extends Component {
     uid: null,
   }
   componentDidMount () {
+    this.setState({
+      uid: window.localStorage.getItem('uid')
+    })
     auth.onAuthStateChanged(user => {
       if (user) {
         this.handleAuth(user)
@@ -23,11 +26,13 @@ class App extends Component {
   }
 
   signedIn = () => {
+    window.localStorage.setItem('uid', this.state.uid)
     return this.state.uid
   }
 
   signOut = () => {
     this.setState({uid: null})
+    window.localStorage.setItem('uid', this.state.uid)
     auth.signOut()
   }
 
@@ -36,7 +41,7 @@ class App extends Component {
       <div className="App">
         {
           this.signedIn() 
-            ? <Main signOut={this.signOut}/> 
+            ? <Main signOut={this.signOut} /> 
             : <SignIn  handleAuth={this.handleAuth}/>
         }
       </div>
