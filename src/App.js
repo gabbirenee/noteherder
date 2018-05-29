@@ -41,7 +41,7 @@ class App extends Component {
       <div className="App">
         {
           this.signedIn() 
-            ? <Main signOut={this.signOut} uid={this.state.uid} /> 
+            ? <Main signOut={this.signOut} uid={window.localStorage.getItem('uid')} /> 
             : <SignIn  handleAuth={this.handleAuth}/>
         }
       </div>
