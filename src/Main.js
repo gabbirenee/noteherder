@@ -12,11 +12,13 @@ class Main extends React.Component {
     this.state = {
       currentNote: this.blankNote(),
       notes: [],
+      uid: null,
     }
   }
 
   componentWillMount() {
-    base.syncState('notes', {
+    this.setState({uid: this.props.uid})
+    base.syncState(JSON.stringify(this.state.uid), {
       context: this,
       state: 'notes',
       asArray: true,
