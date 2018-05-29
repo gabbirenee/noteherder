@@ -17,8 +17,7 @@ class Main extends React.Component {
   }
 
   componentWillMount() {
-    this.setState({uid: this.props.uid})
-    base.syncState(JSON.stringify(this.state.uid), {
+    base.syncState(this.props.uid, {
       context: this,
       state: 'notes',
       asArray: true,
