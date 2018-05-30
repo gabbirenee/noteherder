@@ -16,9 +16,9 @@ class NoteForm extends Component {
 
     // Find the note with that ID
     const i = newProps.notes.findIndex(currentNote => currentNote.id.toString() === newId)
-    const note = newProps.notes[i] || this.blankNote() 
+    const note = newProps.notes[i] || this.blankNote()
 
-    // Update state with that note, if found
+    // Update state with that note
     if (note) {
       this.setState({ note })
     }
@@ -42,13 +42,13 @@ class NoteForm extends Component {
   }
 
   render() {
-    const { removeCurrentNote } = this.props
+    const { removeNote } = this.props
     return (
       <div className="NoteForm">
         <div className="form-actions">
           <button
             type="button"
-            onClick={removeCurrentNote}
+            onClick={() => removeNote(this.state.note)}
           >
             <i className="far fa-trash-alt"></i>
           </button>
