@@ -1,11 +1,13 @@
 {
   "name": "noteherder",
   "version": "0.1.0",
-  "homepage": "https://gabbirenne.github.io/noteherder",
+  "homepage": "https://noteherder-5dd1a.firebaseapp.com/",
   "private": true,
   "dependencies": {
     "aphrodite": "^2.2.1",
+    "firebase-tools": "^3.18.5",
     "gh-pages": "^1.1.0",
+    "global": "^4.3.2",
     "re-base": "^3.2.3",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
@@ -15,7 +17,7 @@
   },
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "firebase deploy",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
