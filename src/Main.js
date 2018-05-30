@@ -6,14 +6,12 @@ import Sidebar from './Sidebar'
 import NoteList from './NoteList'
 import NoteForm from './NoteForm'
 
-
 class Main extends React.Component {
   constructor() {
     super()
     this.state = {
       currentNote: this.blankNote(),
       notes: [],
-      uid: null,
     }
   }
 
@@ -53,42 +51,44 @@ class Main extends React.Component {
       const i = notes.findIndex(currentNote => currentNote.id === note.id)
       notes[i] = note
     }
-    
+
     this.setState({ notes })
     this.setCurrentNote(note)
+}
 
-    //window.localStorage.setItem('notes', JSON.stringify(notes))
-  }
-
-  deleteNote = (note) => {
+  removeCurrentNote = () => {
     const notes = [...this.state.notes]
-    const i = notes.findIndex(currentNote => currentNote.id === note.id)
-    if(i>-1){
+
+    const i = notes.findIndex(note => note.id === this.state.currentNote.id)
+    if (i > -1) {
       notes.splice(i, 1)
       this.setState({ notes })
-      //window.localStorage.setItem('notes', JSON.stringify(notes))
     }
-    this.setCurrentNote(this.blankNote())
+
+    this.resetCurrentNote()
   }
 
   render() {
     const formProps = {
       currentNote: this.state.currentNote,
       saveNote: this.saveNote,
-      deleteNote: this.deleteNote,
+      removeCurrentNote: this.removeCurrentNote,
+      notes: this.state.notes,
     }
+
     return (
       <div className="Main" style={style}>
-        <Sidebar 
-          resetCurrentNote={this.resetCurrentNote} 
-          signOut={this.props.signOut} />
+        <Sidebar
+          resetCurrentNote={this.resetCurrentNote}
+          signOut={this.props.signOut}
+        />
         <NoteList
           notes={this.state.notes}
-          setCurrentNote={this.setCurrentNote}
         />
+
         <Switch>
-          <Route 
-            path="/notes/:id" 
+          <Route
+            path="/notes/:id"
             render={navProps => (
               <NoteForm
                 {...formProps}
@@ -96,7 +96,7 @@ class Main extends React.Component {
               />
             )}
           />
-          <Route 
+          <Route
             render={navProps => (
               <NoteForm
                 {...formProps}
